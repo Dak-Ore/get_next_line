@@ -6,7 +6,7 @@
 /*   By: rsebasti <rsebasti@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 08:59:58 by rsebasti          #+#    #+#             */
-/*   Updated: 2024/11/13 10:59:30 by rsebasti         ###   ########.fr       */
+/*   Updated: 2024/11/13 12:43:59 by rsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,10 @@
 # endif
 
 # if BUFFER_SIZE < 1
+#  undef BUFFER_SIZE
 #  define BUFFER_SIZE 1
 # elif BUFFER_SIZE > 8000000
+#  undef BUFFER_SIZE
 #  define BUFFER_SIZE 8000000
 # endif
 
@@ -27,10 +29,11 @@
 # include <unistd.h>
 # include <fcntl.h>
 
-char	*ft_strchr(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
-char	*strndup(char const *s, size_t n);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-int		ft_strlen(const char *s);
+char	*ft_strchr(char *s);
+char	*ft_strjoin(char  **s1, char *s2);
+char	*ft_strdup(char *s);
+char	*ft_substr(char  *s, unsigned int start, size_t len);
+int		ft_strlen(char *s);
+char	*get_next_line(int fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: rsebasti <rsebasti@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 08:59:56 by rsebasti          #+#    #+#             */
-/*   Updated: 2024/11/13 11:00:38 by rsebasti         ###   ########.fr       */
+/*   Updated: 2024/11/13 12:49:33 by rsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,26 +14,36 @@
 
 void	replace_buffer(char **buffer, int start)
 {
-	char	*nbuffer;
+	char	*tbuffer;
 
-	nbuffer = NULL;
-	nbuffer = ft_substr(*buffer, start)
+	tbuffer = *buffer;
+	*buffer = ft_strdup(tbuffer + start + 1);
+	free(tbuffer);
 }
 
 static int	read_a_line(char **buffer, int fd)
 {
-	int	length;
-	int	readed;
-	char	*content;
+	char	*length;
+	int		readed;
+	char	content[BUFFER_SIZE + 1];
 
-	length = ft_strchr(buffer);
+	length = ft_strchr(*buffer);
 	readed = 1;
-	while (readed > 0 && length == NULL)
+	while (length == NULL && readed > 0)
 	{
 		readed = read(fd, content, BUFFER_SIZE);
+		if (readed == 0)
+			break;
 		content[readed] = '\0';
+		if (buffer && *buffer)
+			*buffer = ft_strjoin(buffer, content);
+		else
+			*buffer = ft_strdup(content);
+		length = ft_strchr(*buffer);
 	}
-	return (length);
+	if (readed == 0)
+		length = *buffer + ft_strlen(*buffer) - 1;
+	return (length - *buffer);
 }
 
 char	*get_next_line(int fd)
@@ -47,15 +57,16 @@ char	*get_next_line(int fd)
 	length = read_a_line(&buffer, fd);
 	if (length >= 0)
 	{
-		line = strndup(buffer, length);
+		line = ft_substr(buffer, 0, length + 1);
 		replace_buffer(&buffer, length);
 	}
 	else
 	{
-		line = buffer;
-		if (buffer);
+		line = NULL;
+		if (buffer)
 			free(buffer);
+		buffer = NULL;
 	}
-	return (*line);
+	return (line);
 }
 

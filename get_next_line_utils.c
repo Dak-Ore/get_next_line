@@ -6,7 +6,7 @@
 /*   By: rsebasti <rsebasti@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 08:59:53 by rsebasti          #+#    #+#             */
-/*   Updated: 2024/11/13 12:59:36 by rsebasti         ###   ########.fr       */
+/*   Updated: 2024/11/14 08:41:06 by rsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ char	*ft_strchr(char *s)
 		return (&s[i]);
 	return (NULL);
 }
+
 int	ft_strlen(char *s)
 {
 	int	i;

@@ -6,7 +6,7 @@
 /*   By: rsebasti <rsebasti@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 08:59:56 by rsebasti          #+#    #+#             */
-/*   Updated: 2024/11/13 12:49:33 by rsebasti         ###   ########.fr       */
+/*   Updated: 2024/11/14 08:45:56 by rsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ static int	read_a_line(char **buffer, int fd)
 	{
 		readed = read(fd, content, BUFFER_SIZE);
 		if (readed == 0)
-			break;
+			break ;
 		content[readed] = '\0';
 		if (buffer && *buffer)
 			*buffer = ft_strjoin(buffer, content);
@@ -49,8 +49,8 @@ static int	read_a_line(char **buffer, int fd)
 char	*get_next_line(int fd)
 {
 	static char	*buffer = NULL;
-	char	*line;
-	int		length;
+	char		*line;
+	int			length;
 
 	if (fd < 0 || read(fd, 0, 0) < 0)
 		return (NULL);
@@ -69,4 +69,3 @@ char	*get_next_line(int fd)
 	}
 	return (line);
 }
-

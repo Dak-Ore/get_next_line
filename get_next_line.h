@@ -6,7 +6,7 @@
 /*   By: rsebasti <rsebasti@student.42perpignan.    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 08:59:58 by rsebasti          #+#    #+#             */
-/*   Updated: 2024/11/13 12:43:59 by rsebasti         ###   ########.fr       */
+/*   Updated: 2024/11/14 08:42:16 by rsebasti         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@
 # include <fcntl.h>
 
 char	*ft_strchr(char *s);
-char	*ft_strjoin(char  **s1, char *s2);
+char	*ft_strjoin(char **s1, char *s2);
 char	*ft_strdup(char *s);
-char	*ft_substr(char  *s, unsigned int start, size_t len);
+char	*ft_substr(char *s, unsigned int start, size_t len);
 int		ft_strlen(char *s);
 char	*get_next_line(int fd);
 
